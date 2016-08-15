@@ -1,6 +1,6 @@
 package com.bin.service;
 
-import com.bin.entity.User;
+import com.bin.entity.Story;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -13,18 +13,18 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-	private static String USER_COLLECTION = "user";
+	private static String USER_COLLECTION = "story";
 
 	@Autowired
 	MongoTemplate mongoTemplate;
 
 	/**
 	 *
-	 * @param user
+	 * @param story
 	 */
-	public void saveUser(User user){
+	public void saveUser(Story story){
 
-		mongoTemplate.save(user, USER_COLLECTION);
+		mongoTemplate.save(story, USER_COLLECTION);
 
 	}
 
@@ -33,8 +33,8 @@ public class UserService {
 	 * @param name
 	 * @return
 	 */
-	public User findUserByName(String name){
-		return mongoTemplate.findOne(new Query(Criteria.where("name").is(name)), User.class, USER_COLLECTION);
+	public Story findUserByName(String name){
+		return mongoTemplate.findOne(new Query(Criteria.where("name").is(name)), Story.class, USER_COLLECTION);
 	}
 
 }

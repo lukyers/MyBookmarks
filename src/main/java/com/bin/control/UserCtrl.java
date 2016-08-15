@@ -1,6 +1,6 @@
 package com.bin.control;
 
-import com.bin.entity.User;
+import com.bin.entity.Story;
 import com.bin.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,30 +24,30 @@ public class UserCtrl {
 
 	@RequestMapping("/index")
 	public ModelAndView index(){
-		ModelAndView mav = new ModelAndView("/user/index");
+		ModelAndView mav = new ModelAndView("/story/index");
 		return mav;
 	}
 
 	@RequestMapping("/save")
-	public ModelAndView saveUser(User user){
+	public ModelAndView saveUser(Story story){
 
-		ModelAndView mav = new ModelAndView("/user/index");
+		ModelAndView mav = new ModelAndView("/story/index");
 
-		logger.info("save:"+user);
+		logger.info("save:"+ story);
 
-		userService.saveUser(user);
+		userService.saveUser(story);
 
 		return mav;
 	}
 
 	@RequestMapping("/find")
-	public ModelAndView findUser(User user){
+	public ModelAndView findUser(Story story){
 
-		ModelAndView mav = new ModelAndView("/user/index");
+		ModelAndView mav = new ModelAndView("/story/index");
 
-		user = userService.findUserByName(user.getName());
+		story = userService.findUserByName(story.getName());
 
-		logger.info("find:"+user);
+		logger.info("find:"+ story);
 
 		return mav;
 	}
